@@ -118,9 +118,9 @@ func main() {
 
 		/* Encrypting and decrypting TEST*/
 		ciphertext := encrypt([]byte(reciever), "rsgchristmas2019")
-		// fmt.Printf("Encrypted: %x\n", ciphertext)
-		plaintext := decrypt(ciphertext, "rsgchristmas2019")
-		fmt.Printf("Decrypted: %s\n", plaintext)
+		fmt.Printf("Encrypted: %x\n", ciphertext)
+		// plaintext := decrypt(ciphertext, "rsgchristmas2019")
+		// fmt.Printf("Decrypted: %s\n", plaintext)
 
 		/* Removing both the buyer and reciver from the pools */
 
@@ -135,17 +135,3 @@ func main() {
 	}
 
 }
-
-//PSUEDO CODE FOR OLD CHRISTMAS GAME
-// for x in range(1,9):
-// 	print ("TURN " + str(x))
-// 	buyer = random.choice(rsg) # pick a random buyer
-// 	reciever = random.choice(pool) # pick a random reciever
-// 	while buyer == reciever: # if buyer == reciever, get a new reciever
-// 		reciever = random.choice(pool)
-// 	encrypt = encode("r$gchristmasgame",reciever)
-// 	print (buyer + " buys for " + encrypt)
-// 	rsg.pop(rsg.index(buyer)) # remove the buyer
-// 	pool.pop(pool.index(reciever)) # remove the reciever
-// 	print ("Remaining people in RSG")
-// 	print (rsg) # print rsg-list
