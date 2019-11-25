@@ -7,7 +7,9 @@ import (
 	"encoding/hex"
 	"fmt"
 	"math/rand"
+	"reflect"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -77,6 +79,14 @@ func printSlice(slice []string) {
 	}
 }
 
+func convert(b []byte) string {
+	s := make([]string, len(b))
+	for i := range b {
+		s[i] = strconv.Itoa(int(b[i]))
+	}
+	return strings.Join(s, ",")
+}
+
 func main() {
 
 	rand.Seed(time.Now().UnixNano())
@@ -117,9 +127,12 @@ func main() {
 		fmt.Println("--- TURN " + strconv.Itoa(turn) + " ---")
 		fmt.Println(buyer + " buys for: ")
 
-		/* Encrypting and decrypting TEST*/
+		/* Encrypting and decrypting */
 		ciphertext := encrypt([]byte(reciever), "rsgchristmas2019")
 		fmt.Printf("Encrypted: %x\n", ciphertext)
+		fmt.Println(ciphertext)
+		fmt.Println(reflect.TypeOf(ciphertext))
+
 		plaintext := decrypt(ciphertext, "rsgchristmas2019")
 		fmt.Printf("Decrypted: %s\n", plaintext)
 

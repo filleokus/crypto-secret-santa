@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"reflect"
 )
 
 func createHash(key string) string {
@@ -37,6 +38,7 @@ func decrypt(data []byte, passphrase string) []byte {
 }
 
 func main() {
+	/* The input needed for ciphertext is byte[]*/
 	fmt.Println("Enter your ciphertext")
 	scanner := bufio.NewScanner(os.Stdin)
 
@@ -44,8 +46,10 @@ func main() {
 		log.Printf("Failed to read: %v", scanner.Err())
 		return
 	}
-	ciphertext := []byte(scanner.Text())
-
+	ciphertext := scanner.Text()
+	//TODO fix the types
+	fmt.Println(ciphertext)
+	fmt.Println(reflect.TypeOf(ciphertext))
 	plaintext := decrypt(ciphertext, "rsgchristmas2019")
 	fmt.Printf("Decrypted: %s\n", plaintext)
 
