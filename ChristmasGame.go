@@ -103,7 +103,8 @@ func main() {
 		reciever = pool[0]
 
 		//buyer != reciever
-		//TODO does not really work
+		//TODO works sometime lol
+		// hacking a do->while
 		for ok := true; ok; ok = buyer == reciever {
 			// fmt.Println("ERROR!")
 			// fmt.Println("Buyer and Reciever are the same!")
@@ -119,8 +120,8 @@ func main() {
 		/* Encrypting and decrypting TEST*/
 		ciphertext := encrypt([]byte(reciever), "rsgchristmas2019")
 		fmt.Printf("Encrypted: %x\n", ciphertext)
-		// plaintext := decrypt(ciphertext, "rsgchristmas2019")
-		// fmt.Printf("Decrypted: %s\n", plaintext)
+		plaintext := decrypt(ciphertext, "rsgchristmas2019")
+		fmt.Printf("Decrypted: %s\n", plaintext)
 
 		/* Removing both the buyer and reciver from the pools */
 

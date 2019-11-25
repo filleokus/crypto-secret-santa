@@ -1,11 +1,14 @@
 package main
 
 import (
+	"bufio"
 	"crypto/aes"
 	"crypto/cipher"
 	"crypto/md5"
 	"encoding/hex"
 	"fmt"
+	"log"
+	"os"
 )
 
 func createHash(key string) string {
@@ -35,4 +38,15 @@ func decrypt(data []byte, passphrase string) []byte {
 
 func main() {
 	fmt.Println("Enter your ciphertext")
+	scanner := bufio.NewScanner(os.Stdin)
+
+	if !scanner.Scan() {
+		log.Printf("Failed to read: %v", scanner.Err())
+		return
+	}
+	ciphertext := []byte(scanner.Text())
+
+	plaintext := decrypt(ciphertext, "rsgchristmas2019")
+	fmt.Printf("Decrypted: %s\n", plaintext)
+
 }
