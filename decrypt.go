@@ -9,7 +9,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"reflect"
 )
 
 func createHash(key string) string {
@@ -46,11 +45,19 @@ func main() {
 		log.Printf("Failed to read: %v", scanner.Err())
 		return
 	}
+	/*Input is bytes[] repsenteded in hexadecimal notation*/
 	ciphertext := scanner.Text()
-	//TODO fix the types
-	fmt.Println(ciphertext)
-	fmt.Println(reflect.TypeOf(ciphertext))
-	plaintext := decrypt(ciphertext, "rsgchristmas2019")
+
+	//TODO
+	/*Decoding from hexadecimal notation back to bytes?*/
+	str, err := hex.DecodeString(ciphertext)
+	if err != nil {
+		fmt.Println("Cant decode the string")
+	}
+
+	//TODO Input is recieved in hexadecimal nottation
+	// Need to decode into byte[] for it to make sense
+	plaintext := decrypt(str, "rsgchristmas2019")
 	fmt.Printf("Decrypted: %s\n", plaintext)
 
 }

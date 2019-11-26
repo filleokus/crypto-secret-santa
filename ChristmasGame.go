@@ -7,7 +7,6 @@ import (
 	"encoding/hex"
 	"fmt"
 	"math/rand"
-	"reflect"
 	"strconv"
 	"strings"
 	"time"
@@ -102,11 +101,6 @@ func main() {
 	fmt.Println("--- Shuffling both the lists ...---")
 	Shuffle(rsgMembers, source)
 	Shuffle(pool, source)
-	// DEBUG
-	// fmt.Println("--- Printing shuffled members---")
-	// printSlice(rsgMembers)
-	// fmt.Println("--- Printing shuffled pool ---")
-	// printSlice(pool)
 
 	for i := 1; i <= 8; i++ {
 		buyer = rsgMembers[0]
@@ -116,12 +110,8 @@ func main() {
 		//TODO works sometime lol
 		// hacking a do->while
 		for ok := true; ok; ok = buyer == reciever {
-			// fmt.Println("ERROR!")
-			// fmt.Println("Buyer and Reciever are the same!")
-			// fmt.Println(buyer + " " + reciever)
 			Shuffle(pool, source)
 			reciever = pool[0]
-			// fmt.Println(buyer + " " + reciever)
 		}
 
 		fmt.Println("--- TURN " + strconv.Itoa(turn) + " ---")
@@ -130,21 +120,16 @@ func main() {
 		/* Encrypting and decrypting */
 		ciphertext := encrypt([]byte(reciever), "rsgchristmas2019")
 		fmt.Printf("Encrypted: %x\n", ciphertext)
+
+		/* The ciphertext is represented as hexadecimal notation*/
 		fmt.Println(ciphertext)
-		fmt.Println(reflect.TypeOf(ciphertext))
 
 		plaintext := decrypt(ciphertext, "rsgchristmas2019")
 		fmt.Printf("Decrypted: %s\n", plaintext)
 
 		/* Removing both the buyer and reciver from the pools */
-
-		// fmt.Println("Removing " + buyer + " from the list")
 		rsgMembers = Remove(rsgMembers, 0)
-		// printSlice(rsgMembers)
-
-		// fmt.Println("Removing " + reciever + " from the list")
 		pool = Remove(pool, 0)
-		// printSlice(pool)
 		turn++
 	}
 
