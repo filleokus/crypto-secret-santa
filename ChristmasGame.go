@@ -122,10 +122,10 @@ func main() {
 		fmt.Printf("Encrypted: %x\n", ciphertext)
 
 		/* The ciphertext is represented as hexadecimal notation*/
-		fmt.Println(ciphertext)
+		// fmt.Println(ciphertext)
 
-		plaintext := decrypt(ciphertext, "rsgchristmas2019")
-		fmt.Printf("Decrypted: %s\n", plaintext)
+		// plaintext := decrypt(ciphertext, "rsgchristmas2019")
+		// fmt.Printf("Decrypted: %s\n", plaintext)
 
 		/* Removing both the buyer and reciver from the pools */
 		rsgMembers = Remove(rsgMembers, 0)

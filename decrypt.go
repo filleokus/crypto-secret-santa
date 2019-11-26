@@ -52,12 +52,13 @@ func main() {
 	/*Decoding from hexadecimal notation back to bytes?*/
 	str, err := hex.DecodeString(ciphertext)
 	if err != nil {
-		fmt.Println("Cant decode the string")
+		fmt.Println("Can't decode the string :/")
 	}
 
 	//TODO Input is recieved in hexadecimal nottation
 	// Need to decode into byte[] for it to make sense
 	plaintext := decrypt(str, "rsgchristmas2019")
-	fmt.Printf("Decrypted: %s\n", plaintext)
+	fmt.Println("Decyrption successful!")
+	fmt.Printf("Decrypted ciphertext: %s\n", plaintext)
 
 }
